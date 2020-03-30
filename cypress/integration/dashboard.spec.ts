@@ -27,4 +27,12 @@ describe('dashboard', () => {                                       //grouping h
         cy.get('@ViewLinks').first().contains('Dashboard');
         cy.get('@ViewLinks').last().contains('Heroes')
     })
+
+    //Homework 2
+    it(`has 4 heroes`, () => {
+        cy.visit('/dashboard')
+        cy.get('app-dashboard div').should('have.class', 'module')
+
+    })
+    //End Homework 2
 })
