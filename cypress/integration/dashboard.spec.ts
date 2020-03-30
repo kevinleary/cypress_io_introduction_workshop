@@ -31,8 +31,16 @@ describe('dashboard', () => {                                       //grouping h
     //Homework 2
     it(`has 4 heroes`, () => {
         cy.visit('/dashboard')
-        cy.get('app-dashboard div').should('have.class', 'module')
+        cy.get('app-dashboard div').should('have.class', 'module').and('have.class', 'hero')
 
     })
     //End Homework 2
+
+    //Homework 3 - Test that checks the color for "Tour of Heroes"
+    it(`checks the color for "Tour of Heroes`, () => {
+        cy.visit('/dashboard')
+        cy.get('h1').contains('Tour of Heroes').should('have.css', 'color', 'rgb(153, 153, 153)')
+
+    }) //End Homework 3
+
 })
