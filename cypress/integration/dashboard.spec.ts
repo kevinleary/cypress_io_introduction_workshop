@@ -20,4 +20,11 @@ describe('dashboard', () => {                                       //grouping h
         cy.title().should('eq', 'Tour of Heroes')
     })
 
+    it(`has a dashboard and heroes view links`, () => {
+        //cy.get('nav a').should('have.length', 2)                  //get both <a> aliases 
+        cy.get('nav a').as('ViewLinks')
+        
+        cy.get('@ViewLinks').first().contains('Dashboard');
+        cy.get('@ViewLinks').last().contains('Heroes')
+    })
 })
