@@ -1,3 +1,5 @@
+import { url } from "inspector"
+
 describe('dashboard', () => {                                       //grouping here i.e: dashboard
 
 
@@ -42,5 +44,17 @@ describe('dashboard', () => {                                       //grouping h
         cy.get('h1').contains('Tour of Heroes').should('have.css', 'color', 'rgb(153, 153, 153)')
 
     }) //End Homework 3
+
+})
+
+
+describe('search box', () => {
+
+    it(`displays Mr.Nice when mr is input and it navigates to right page when clicked`, () => {
+        cy.visit('')
+        cy.get('input').type('mr')
+        cy.get('.search-result li').contains('Mr. Nice').click();
+        cy.url().should('include', '/detail/11')
+    })
 
 })
