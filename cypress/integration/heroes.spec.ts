@@ -15,7 +15,7 @@ describe('Add and remove heroes', () => {
             response: {}
         })
 
-        cy.visit('/heroes')
+        
     })
 
     //page-object-pattern for e2e 
@@ -33,4 +33,19 @@ describe('Add and remove heroes', () => {
         cy.contains('add').click()
         cy.get('ul li').contains('Joker').siblings('button').click()
     })
+
+    //testing cypress fixtures to mock JSON data 
+    it('it should show 10 heroes', () => {
+        
+        cy.route({                                                      //route to intercept XHR DELETE requests
+            method: "GET",
+            url: "/api/heroes",
+            response: "fixture:batman"
+        })
+        
+        cy.visit('/heroes')
+        cy.get('ul li').should('have.length', 10)
+        
+    })
+
 })
